@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "username": "customer1",
+      "password": "pass123",
+      "role": "customer",
+      "name": "John Doe",
+      "shippingAddress": "123 Main St",
+      "balance": 150.00
+    },
+    {
+      "id": 2,
+      "username": "seller1",
+      "password": "pass123",
+      "role": "seller",
+      "companyName": "Widgets Inc",
+      "bankAccount": "987654321"
+    },
+    {
+      "id": 3,
+      "username": "admin",
+      "password": "adminpass",
+      "role": "admin"
+    }
+  ]
+  
