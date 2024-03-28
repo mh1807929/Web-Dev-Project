@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "widget a",
+      "description": "A high-quality widget.",
+      "price": 19.99,
+      "quantity": 100,
+      "image": "/images/img1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "gadget b",
+      "description": "An essential gadget for everyday use.",
+      "price": 29.99,
+      "quantity": 50,
+      "image": "/images/img2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "gadget c",
+      "description": "An important gadget.",
+      "price": 69.69,
+      "quantity": 100,
+      "image": "/images/img3.jpg"
+    }
+  ]
+  
