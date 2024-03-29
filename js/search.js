@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .getElementById("search-input")
       .value.toLowerCase();
     var show = document.getElementById("search-results");
-    fetch("items.json")
+    fetch("/data/items.json")
       .then((response) => {
         if (!response.ok) {
           // Check if the response is successful
@@ -23,9 +23,24 @@ document.addEventListener("DOMContentLoaded", function () {
           h3.innerHTML = `${authenticatedItem.name}`;
           const p = document.createElement("p");
           p.innerText = `${authenticatedItem.price}`;
+          const anc = document.createElement("a");
+          anc.innerHTML = "Purchase";
+          anc.href = "/html/purchase.html";
+
+          anc.style.cssText = `width: 100%;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          background-color: #007bff;
+          color: #fff;
+          cursor: pointer;
+          text-decoration: none;
+          `;
+          anc.addEventListener("click", purchase());
           result.appendChild(image);
           result.append(h3);
           result.append(p);
+          result.append(anc);
 
           show.appendChild(result);
           //   <img src="item1.jpg" alt="Item 1">
@@ -41,3 +56,5 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
+function purchase() {}

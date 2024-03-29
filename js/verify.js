@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const msg = document.getElementById("login-msg");
 
       // Load JSON file containing user data
-      fetch("users.json")
+      fetch("/data/users.json")
         .then((response) => {
           if (!response.ok) {
             // Check if the response is successful
@@ -19,13 +19,22 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then((users) => {
           var authenticatedUser = users.find(
-            (user) =>
-              user.username === username &&
-              user.password === password &&
-              user.role === "customer"
+            (user) => user.username === username && user.password === password //&&
+            // user.role === "seller"
           );
           if (authenticatedUser) {
             alert("Login successful!");
+            switch (authenticatedUser.role) {
+              case "seller":
+                msg.href = "#";
+                break;
+              case "customer":
+                msg.href = "/html/main.html";
+                break;
+              case "admin":
+                msg.href = "#";
+                break;
+            }
             msg.style.display = "block";
           } else {
             alert("Invalid username or password. Please try again."); // Display error message
