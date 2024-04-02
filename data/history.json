@@ -1,0 +1,22 @@
+[
+    {
+        "user": "customer1",
+        "firstName": "Hassan",
+        "lastName": "Yaqub",
+        "productName": "Boeing 747",
+        "price": 30000000,
+        "address": "Los Santos Airport, Hanger 4",
+        "quantity": 2,
+        "totalCost": 60000000
+    },
+    {
+        "user": "customer1",
+        "firstName": "Hassan",
+        "lastName": "Yaqub",
+        "productName": "B2 Stealth Bomber",
+        "price": 60000000,
+        "address": "Fort Zancudo",
+        "quantity": 1,
+        "totalCost": 60000000
+    }
+]

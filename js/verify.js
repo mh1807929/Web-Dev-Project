@@ -6,10 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
-      const msg = document.getElementById("login-msg");
 
       // Load JSON file containing user data
-      fetch("/data/users.json")
+      fetch("/ecom/data/users.json")
         .then((response) => {
           if (!response.ok) {
             // Check if the response is successful
@@ -19,23 +18,28 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then((users) => {
           var authenticatedUser = users.find(
-            (user) => user.username === username && user.password === password //&&
-            // user.role === "seller"
+            (user) => user.username === username && user.password === password
           );
           if (authenticatedUser) {
             alert("Login successful!");
+
+            // Set session storage variable indicating user is logged in
+            sessionStorage.setItem("isLoggedIn", true);
+
             switch (authenticatedUser.role) {
               case "seller":
-                msg.href = "#";
+                sessionStorage.setItem("user", "seller");
+                window.location.href = "seller.html";
                 break;
               case "customer":
-                msg.href = "/html/main.html";
+                sessionStorage.setItem("user", username);
+                window.location.href = "index.html";
                 break;
               case "admin":
-                msg.href = "#";
+                sessionStorage.setItem("user", "admin");
+                window.location.href = "admin.html";
                 break;
             }
-            msg.style.display = "block";
           } else {
             alert("Invalid username or password. Please try again."); // Display error message
           }

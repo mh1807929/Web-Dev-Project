@@ -1,27 +1,32 @@
-[
-    {
-      "id": 1,
-      "name": "widget a",
-      "description": "A high-quality widget.",
-      "price": 19.99,
-      "quantity": 100,
-      "image": "/images/img1.jpg"
-    },
-    {
-      "id": 2,
-      "name": "gadget b",
-      "description": "An essential gadget for everyday use.",
-      "price": 29.99,
-      "quantity": 50,
-      "image": "/images/img2.jpg"
-    },
-    {
-      "id": 3,
-      "name": "gadget c",
-      "description": "An important gadget.",
-      "price": 69.69,
-      "quantity": 100,
-      "image": "/images/img3.jpg"
-    }
-  ]
-  
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Boeing 747",
+            "quantity": "1",
+            "image": "https:\/\/djsaviation.net\/wp-content\/uploads\/2024\/02\/43038220192_9b3b1cb3e2_o-scaled.jpg",
+            "price": "30000000"
+        },
+        {
+            "id": 2,
+            "name": "Airbus A380",
+            "quantity": "3",
+            "image": "https:\/\/orbitshub.com\/wp-content\/uploads\/2023\/11\/Airbus-A380-800_-The-Ultimate-Super-Jumbo.jpg",
+            "price": "45000000"
+        },
+        {
+            "id": 3,
+            "name": "Honda HA-420",
+            "quantity": "5",
+            "image": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/2\/23\/HondaJet_Ryabtsev.jpg",
+            "price": "9000000"
+        },
+        {
+            "id": 4,
+            "name": "B2 Stealth Bomber",
+            "quantity": "1",
+            "image": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/a\/a1\/B-2_Spirits_on_Deployment_to_Indo-Asia-Pacific.jpg",
+            "price": "60000000"
+        }
+    ]
+}
