@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator dbml {
+  provider = "prisma-dbml-generator"
+}
+
+// , surname, shipping address, username, password, and money
+// balance
+model Customer {
+  id              String     @id @default(cuid())
+  name            String
+  surname         String
+  shippingAddress Address    @relation(fields: [addressId], references: [id])
+  username        String     @unique
+  password        String
+  balance         Float      @default(0.0)
+  addressId       String
+  Purchase        Purchase[]
+}
+
+// Seller has a company name, username, password and a bank account
+
+model Seller {
+  id          String     @id @default(cuid())
+  companyName String
+  userName    String     @unique
+  password    String
+  bankAccount String
+  Purchase    Purchase[]
+}
+
+// Admin has a username and a password
+
+model Admin {
+  id       String @id @default(cuid())
+  userName String @unique
+  password String
+}
+
+//  {
+//             "id": 4,
+//             "name": "B2 Stealth Bomber",
+//             "quantity": "1",
+//             "image": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/a\/a1\/B-2_Spirits_on_Deployment_to_Indo-Asia-Pacific.jpg",
+//             "price": "60000000"
+//         }
+
+model Item {
+  id       String     @id @default(cuid())
+  name     String
+  quantity Int
+  image    String
+  price    Float
+  Purchase Purchase[]
+}
+
+model Address {
+  id       String     @id @default(cuid())
+  street   String
+  city     String
+  country  String
+  customer Customer[]
+}
+
+// {
+//         "Customer": "customer1",
+//         "firstName": "Hassan",
+//         "lastName": "Yaqub",
+//         "productName": "B2 Stealth Bomber",
+//         "price": 60000000,
+//         "address": "Fort Zancudo",
+//         "quantity": 1,
+//         "totalCost": 60000000
+//     }
+
+model Purchase {
+  id         String   @id @default(cuid())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  item       Item     @relation(fields: [itemId], references: [id])
+  seller     Seller   @relation(fields: [sellerId], references: [id])
+  quantity   Int
+  totalPrice Float
+  date       DateTime @default(now())
+
+  customerId String
+  itemId     String
+  sellerId   String
+}

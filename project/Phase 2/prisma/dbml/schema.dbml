@@ -1,0 +1,68 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Customer {
+  id String [pk]
+  name String [not null]
+  surname String [not null]
+  shippingAddress Address [not null]
+  username String [unique, not null]
+  password String [not null]
+  balance Float [not null, default: 0]
+  addressId String [not null]
+  Purchase Purchase [not null]
+}
+
+Table Seller {
+  id String [pk]
+  companyName String [not null]
+  userName String [unique, not null]
+  password String [not null]
+  bankAccount String [not null]
+  Purchase Purchase [not null]
+}
+
+Table Admin {
+  id String [pk]
+  userName String [unique, not null]
+  password String [not null]
+}
+
+Table Item {
+  id String [pk]
+  name String [not null]
+  quantity Int [not null]
+  image String [not null]
+  price Float [not null]
+  Purchase Purchase [not null]
+}
+
+Table Address {
+  id String [pk]
+  street String [not null]
+  city String [not null]
+  country String [not null]
+  customer Customer [not null]
+}
+
+Table Purchase {
+  id String [pk]
+  customer Customer [not null]
+  item Item [not null]
+  seller Seller [not null]
+  quantity Int [not null]
+  totalPrice Float [not null]
+  date DateTime [default: `now()`, not null]
+  customerId String [not null]
+  itemId String [not null]
+  sellerId String [not null]
+}
+
+Ref: Customer.addressId > Address.id
+
+Ref: Purchase.customerId > Customer.id
+
+Ref: Purchase.itemId > Item.id
+
+Ref: Purchase.sellerId > Seller.id
