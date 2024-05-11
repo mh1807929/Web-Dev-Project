@@ -1,16 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-const totalAmountPerProductPerYear = await prisma.purchase.groupBy({
-  by: [{ itemId: true }, { date: { year: true } }],
-  _sum: { totalPrice: true }
-});
-
-console.log(totalAmountPerProductPerYear)
-// const buyersPerLocation = await prisma.address.groupBy({
-//   by: ["city", "country"],
-//   _count: { distinct: { customerId: true } },
+// const totalAmountPerProductPerYear = await prisma.purchase.groupBy({
+//   by: [{ itemId: true }, { date: { year: true } }],
+//   _sum: { totalPrice: true }
 // });
+
+// console.log(totalAmountPerProductPerYear)
+const buyersPerLocation = await prisma.address.groupBy({
+  by: ["city", "country"],
+  _count:  { customerId: true },
+});
 
 // const sixMonthsAgo = new Date();
 // sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
